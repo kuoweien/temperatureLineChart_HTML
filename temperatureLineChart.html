@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name=”viewport” content=”width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+<title></title>
+<link rel="stylesheet"  type="text/css" href="style.css" />
+
+</head>
+
+<body style="background: #7f8da5" >
+  <p id='text'><span style="font-size:30px;">即時生理數據 Real-time physiological data</span></p></font>
+  <div id="temp" style="width:100%;height:350px;border:3px;">
+    <br><div id='line_title' style="text-align:center">體溫  Body temperature</div>
+    <canvas id="tpChart" style="width:97%;height:80%"></canvas>        
+  </div>
+  <p></p>
+  <div id="hr" style="width:100%;height:350px;border:3px;">
+    <br><div id='line_title'>心跳  Heart rate</div>
+    <canvas id="hrChart" style="width:97%;height:80%"></canvas>
+  </div>  
+</body>
+
+<script>
+
+    var timeFormat = 'YYYY-MM-DD HH:mm:ss';
+
+    var config = {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: "體溫",
+                backgroundColor: "#003060",
+                borderColor: "#003060",
+                lineTension: 0,
+                fill: false,
+                data: [{
+                    x: moment("2021-02-18 09:00").format(timeFormat),
+                    y: 36.7
+                },{
+                    x: moment("2021-02-18 19:00").format(timeFormat),
+                    y: 36.8
+                },{
+                    x: moment("2021-02-19 09:00").format(timeFormat),
+                    y: 36.3
+                },{
+                    x: moment("2021-02-19 19:00").format(timeFormat),
+                    y: 35.9
+                },{
+                    x: moment("2021-02-20 09:00").format(timeFormat),
+                    y: 36.5
+                },{
+                    x: moment("2021-02-20 19:00").format(timeFormat),
+                    y: 36.3
+                },{
+                    x: moment("2021-02-21 09:00").format(timeFormat),
+                    y: 36.5
+                },{
+                    x: moment("2021-02-21 19:00").format(timeFormat),
+                    y: 35.5
+                },{
+                    x: moment("2021-02-22 09:00").format(timeFormat),
+                    y: 36.2
+                },{
+                    x: moment("2021-02-22 19:00").format(timeFormat),
+                    y: 36.5
+                },{
+                    x: moment("2021-02-23 09:00").format(timeFormat),
+                    y: 36.7
+                },{
+                    x: moment("2021-02-23 19:00").format(timeFormat),
+                    y: 36.1
+                },{
+                    x: moment("2021-02-24 09:00").format(timeFormat),
+                    y: 36.2
+                },{
+                    x: moment("2021-02-24 19:00").format(timeFormat),
+                    y: 36.8
+                }],
+            }]
+        },
+        options: {
+            title: {
+                text: "This is title"
+            },
+            animation: {
+                duration: 0
+            },       
+            scales: {
+                xAxes: [{
+                    type: "time",
+                    time: {
+                        parser: timeFormat,
+                        tooltipFormat: 'll HH:mm:ss',
+                        unit: 'day',
+                        max: moment("2021-02-25 00:00").format('YYYY-MM-DD HH:mm:ss'),
+                        min: moment("2021-02-18 00:00").format('YYYY-MM-DD HH:mm:ss')
+                    },
+ 
+
+                    scaleLabel: {
+                        display: true,
+                        labelString: '週Week'
+                    },ticks: { 
+                        fontSize: 18
+                    }
+                },],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                    },ticks: { 
+                        fontSize: 20,
+                        stepSize:0.4
+                    } 
+                }]
+            },
+        }
+    };
+
+    var ctx = document.getElementById("tpChart").getContext("2d");
+    console.log(config);
+    window.myLine = new Chart(ctx, config);
+
+
+    var config2 = {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: "心跳",
+                backgroundColor: "#4D0000",
+                borderColor: "#4D0000",
+                lineTension: 0,
+                fill: false,
+                data: [{
+                    x: moment("2021-02-18 09:00").format(timeFormat),
+                    y: 83
+                },{
+                    x: moment("2021-02-18 19:00").format(timeFormat),
+                    y: 90
+                },{
+                    x: moment("2021-02-19 09:00").format(timeFormat),
+                    y: 100
+                },{
+                    x: moment("2021-02-19 19:00").format(timeFormat),
+                    y: 95
+                },{
+                    x: moment("2021-02-20 09:00").format(timeFormat),
+                    y: 92
+                },{
+                    x: moment("2021-02-20 19:00").format(timeFormat),
+                    y: 92
+                },{
+                    x: moment("2021-02-21 09:00").format(timeFormat),
+                    y: 105
+                },{
+                    x: moment("2021-02-21 19:00").format(timeFormat),
+                    y: 92
+                },{
+                    x: moment("2021-02-22 09:00").format(timeFormat),
+                    y: 103
+                },{
+                    x: moment("2021-02-22 19:00").format(timeFormat),
+                    y: 108
+                },{
+                    x: moment("2021-02-23 09:00").format(timeFormat),
+                    y: 90
+                },{
+                    x: moment("2021-02-23 19:00").format(timeFormat),
+                    y: 95
+                },{
+                    x: moment("2021-02-24 09:00").format(timeFormat),
+                    y: 100
+                },{
+                    x: moment("2021-02-24 19:00").format(timeFormat),
+                    y: 99
+                }],
+            }]
+        },
+        options: {
+            title: {
+                text: "This is title"
+            },
+            animation: {
+                duration: 0
+            }, 
+            scales: {
+                xAxes: [{
+                    type: "time",
+                    time: {
+                        parser: timeFormat,
+                        tooltipFormat: 'll HH:mm',
+                        unit: 'day',
+                        max: moment("2021-02-25 00:00").format('YYYY-MM-DD HH:mm:ss'),
+                        min: moment("2021-02-18 00:00").format('YYYY-MM-DD HH:mm:ss')
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: '週Week'
+                    },ticks: { 
+                        fontSize: 18
+                    }
+                },],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                    },ticks: { 
+                        fontSize: 20,
+                        stepSize:5
+                    } 
+                }]
+            },
+        }
+    };
+    var ctx2 = document.getElementById("hrChart").getContext("2d");
+    console.log(config2);
+    window.myLine = new Chart(ctx2, config2);    
+</script>
+
+</html>
+
+
+

@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+
+<style>
+
+
+#line_title {
+  text-align: center;
+  font-family: "LiGothic", "FangSong", Arial, serif;
+}
+#text {
+  color: white;
+  text-align: center;
+  font-family: "LiGothic", "FangSong", Arial, serif;
+}
+#line_title {
+  text-align: center;
+  font-family: "LiGothic", "FangSong", Arial, serif;
+  font-size: 20px
+}
+#temp {
+  background-color: white;
+  color: black;
+} 
+#hr {
+  background-color: white;
+  color: black;
+  /*padding: 150px;
+  text-align: center;*/
+} 
+#tpChart{
+  margin: auto;
+  margin-top: 10px;
+  /*background: #f9e498;*/
+  display: block;
+  }
+#hrChart{
+  margin: auto;
+  margin-top: 10px;
+  display: block;
+  }
+</style>
